@@ -399,11 +399,13 @@ cover is background size for best postioning
   position: relative;
 }
 
+/* image format */
 .skill-slider .item img {
   width: 50%;
   margin: 0 auto 15px auto;
 }
 
+/* the gradient background (two tone background) that is added in the back */
 .background-image-left {
   top: 28%;
   position: absolute;
@@ -411,6 +413,15 @@ cover is background size for best postioning
   width: 40%;
   z-index: -4;
 }
+
+/*  ------------- THESE ARE ALL FOR THE PROJECT SECTIONS STYLING --------------- */
+/* FINISH THIS SECTION WHEN I COME BACK*/
+
+/* for the active tab we have a gradient background ".nav-link.active"*/
+
+/* each tab has its own styling with its unique ID*/
+
+
 
 /* THESE ARE ALL THE DEFAULT SETTINGS DOWN BELOW THAT COME PRE-SET*/ 
 .App {
