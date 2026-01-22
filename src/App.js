@@ -1,12 +1,10 @@
 import './App.css';
-// import navbar from components folder
+// import .js files from components folder
 import { NavBar } from './components/NavBar';
-// import banner.js from components folder
 import { Banner } from './components/Banner';
-// import skills section from components folder
 import { Skills } from './components/Skills';
-// import project section from components
 import { Projects } from './components/Projects';
+import { Contact } from './components/Contact';
 // MAKE SURE TO HAVE BOOTSTRAP DOWNLAODED
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -17,6 +15,7 @@ function App() {
       <Banner />
       <Skills />
       <Projects />
+      <Contact />
     </div>
   );
 }
