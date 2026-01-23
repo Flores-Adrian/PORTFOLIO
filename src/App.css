@@ -141,6 +141,7 @@ span.navbar-text{
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
+/* THIS IS WHAT is the background color for the social buttons */
 .social-icon a::before {
   content: "";
   width: 42px;
@@ -373,8 +374,8 @@ cover is background size for best postioning
   background: #151515;
   border-radius: 64px;
   text-align: center;
-  padding: 60px 50px;
-  margin-top: -60px;
+  padding: 30px 25px;
+  margin-top: 0;
 }
 
 /* This is for the skill titles */
@@ -413,6 +414,35 @@ cover is background size for best postioning
   width: 40%;
   z-index: -4;
 }
+
+/* this part is to be able to add a gap between the first skills box and the BANNER*/
+.skill-bx--main {
+  margin-top: 30px;
+}
+/* this part so it add a gap in between different sections */
+.skill-block {
+  margin-top: 30px;
+}
+
+.skill-block:first-child {
+  margin-top: 0;
+}
+
+/* this is to basically to control the other sizes of skills boxes 
+- you can reduce padding
+- you can reduce font/icon sizes
+*/
+.skill-bx--compact {
+  padding: 30px 25px;
+}
+
+/*
+(this would be to change the sizes of the images for the other section, you can change --compact to --analytics or any other sections that are added)
+.skill-bx--compact .item img {
+  max-width: 90px;
+}
+*/
+
 
 /*  ------------- THESE ARE ALL FOR THE PROJECT SECTIONS STYLING --------------- */
 /* FINISH THIS SECTION WHEN I COME BACK*/

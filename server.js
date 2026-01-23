@@ -35,7 +35,7 @@ const contactEmail = nodemailer.createTransport({
 });
 
 // this is just to verify if the server is running when you activate server
-//  "npm server"
+//  "node server.js"
 contactEmail.verify((error) => {
     if (error) {
         console.log(error);

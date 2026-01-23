@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 /** THIS IS TO IMPORT THE SPECIFIC BOOTSTRAP ICONS I WILL BE USING*/
 import { ArrowRightCircle } from "react-bootstrap-icons";
+
 // import header
 import headerImg from "../assets/img/header-img.svg"
+import astroImg from "../assets/img/astronaut_mainPicture.png";
+import aot_Titan from "../assets/img/aot-Titan.png";
 
 /* start off with adding text, structure, and image*/
 export const Banner = () => {
@@ -97,7 +100,7 @@ export const Banner = () => {
                     </Col>
                     
                     <Col xs={12} md={6} xl={5} /** THIS WILL BE FOR THE IMAGE WE ADD ON MAIN PG */>
-                        <img src={headerImg} alt="Header Img" />
+                        <img src={astroImg} alt="Header Img" />
                     </Col>
                 </Row>
             </Container>

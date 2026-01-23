@@ -33,11 +33,12 @@ export const Contact = () => {
         })
     }
 
-    // create function to submit information
+    // pass and create function to submit information
     // TO SEND INFO WE NEED USE MAIL SERVER, we use "node mailer"
     // making request to API
     const handleSubmit = async(e) => {
         e.preventDefault();
+        // this would show up when button is triggered
         setButtonText('Sending...');
         let response = await fetch("http://localhost:5000/contact", {
             method: "POST",
@@ -76,13 +77,13 @@ export const Contact = () => {
                                 <Col sm={6} className="px-1" /** onchange is used to updated our specified state like firstName for ex. */>
                                     <input type="text" value={formDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
                                 </Col>
-                                <Col sm={6} className="px-1" /** onchange is used to updated our specified state like firstName for ex. */>
+                                <Col sm={6} className="px-1" /** onchange is used to updated our specified state like lastName for ex. */>
                                     <input type="text" value={formDetails.lastName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)} />
                                 </Col>
-                                <Col sm={6} className="px-1" /** onchange is used to updated our specified state like firstName for ex. */>
+                                <Col sm={6} className="px-1" /** onchange is used to updated our specified state like email for ex. */>
                                     <input type="email" value={formDetails.email} placeholder="Email" onChange={(e) => onFormUpdate('email', e.target.value)} />
                                 </Col>
-                                <Col sm={6} className="px-1" /** onchange is used to updated our specified state like firstName for ex. */>
+                                <Col sm={6} className="px-1" /** onchange is used to updated our specified state like phone for ex. */>
                                     <input type="tel" value={formDetails.phone} placeholder="Phone No." onChange={(e) => onFormUpdate('phone', e.target.value)} />
                                 </Col>
                                 <Col>
@@ -98,7 +99,7 @@ export const Contact = () => {
                                     // based on the status, true is successful, false is not successful (if fails then danger; if sends then "sucess")
                                     status.message &&
                                     <Col>
-                                        <p className={status.sucess === false ? "danger" : "success"}>
+                                        <p className={status.success === false ? "danger" : "success"}>
                                             {status.message}
                                         </p>
                                     </Col> 
