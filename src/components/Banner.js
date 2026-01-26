@@ -10,6 +10,10 @@ import headerImg from "../assets/img/header-img.svg"
 import astroImg from "../assets/img/astronaut_mainPicture.png";
 import aot_Titan from "../assets/img/aot-Titan.png";
 
+// import animation.css and react on screen to track if user is on section
+import 'animate.css';
+import TrackVisibility from "react-on-screen";
+
 /* start off with adding text, structure, and image*/
 export const Banner = () => {
     // this will be for the index as to which word is currently being displayed
@@ -77,29 +81,39 @@ export const Banner = () => {
         <section className="banner" id="home">
             <Container>
                 <Row className="align-items-center">
-                    <Col xs={12} md={6} xl={7} /**ALL XS, MD, XL add up to 12 if you plan to add more col */>
-                        
-                        <span className="tagline" /**this is title */>
-                            Welcome to my Portfolio
-                        </span>
+                    {/**ALL XS, MD, XL add up to 12 if you plan to add more col */}
+                    <Col xs={12} md={6} xl={7}>
+                        {/** this is to track/use animation and div is for styling */}
+                        {/** if it is visible fade in, IF NOT leave as is */}
+                        {/** "animate__animated animate__[insert animation] is used to add animation" AND HAVE TO WRAP WHAT WE WANT*/}
+                        <TrackVisibility>
+                        {({ isVisible }) =>
+                            <div className={isVisible ? "animate__animated animate__bounce" : ""}>
+                                {/**this is title */}
+                                <span className="tagline">
+                                    Welcome to my Portfolio
+                                </span>
+                                {/** first put text, then animation*/}
+                                <h1>
+                                    {` Hi I'm Adrian Flores `}
+                                    <span className="wrap" /**this text WILL BE rotating */>
+                                        {text}
+                                    </span>
+                                </h1>
+                                <p>
+                                    THIS IS A SAMPLE PARAGRAPH, ADD DESCRIPTION IN THE FUTURE
+                                </p>
 
-                        <h1 /** first put text, then animation*/>
-                            {` Hi I'm Adrian Flores `}
-                            <span className="wrap" /**this text WILL BE rotating */>
-                                {text}
-                            </span>
-                        </h1>
-
-                        <p>
-                            THIS IS A SAMPLE PARAGRAPH, ADD DESCRIPTION IN THE FUTURE
-                        </p>
-
-                        <button onClick={() => console.log('connect')} /**THIS BUTTON WILL BE USING BOOTSTRAP ICONS */>
-                            Let's connect <ArrowRightCircle size={25} />
-                        </button>
+                                {/**THIS BUTTON WILL BE USING BOOTSTRAP ICONS */}
+                                <button onClick={() => console.log('connect')}>
+                                    Let's connect <ArrowRightCircle size={25} />
+                                </button>
+                            </div>}
+                        </TrackVisibility>
                     </Col>
                     
-                    <Col xs={12} md={6} xl={5} /** THIS WILL BE FOR THE IMAGE WE ADD ON MAIN PG */>
+                    {/** THIS WILL BE FOR THE IMAGE WE ADD ON MAIN PG */}
+                    <Col xs={12} md={6} xl={5}>
                         <img src={astroImg} alt="Header Img" />
                     </Col>
                 </Row>

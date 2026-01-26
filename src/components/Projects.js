@@ -8,6 +8,8 @@ import projImg3 from "../assets/img/project-img3.png";
 
 // import gradient background
 import colorSharp2 from "../assets/img/color-sharp2.png";
+import TrackVisibility from "react-on-screen";
+import 'animate.css';
 
 
 //
@@ -55,8 +57,13 @@ export const Projects = () => {
             <Container>
                 <Row>
                     <Col>
+                    <TrackVisibility>
+                        {({ isVisible }) => 
+                        <div className={isVisible ? "animate__animated animate__bounce": ""}>
                     <h2> Projects </h2>
-                    <p /*Use bootstrap TAB to not only have tabs but project cards*/> sample description, CHANGE THIS DESCRIPTION TO SUMAMRIZE</p>
+                    <p /*Use bootsSrap TAB to not only have tabs but project cards*/> sample description, CHANGE THIS DESCRIPTION TO SUMAMRIZE</p>
+                    </div>}
+                    </TrackVisibility>
                     <Tab.Container id="projects-tabs" defaultActiveKey="first">
                         <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                             <Nav.Item>
