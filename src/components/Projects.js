@@ -59,7 +59,7 @@ export const Projects = () => {
                     <Col>
                     <TrackVisibility>
                         {({ isVisible }) => 
-                        <div className={isVisible ? "animate__animated animate__bounce": ""}>
+                        <div className={isVisible ? "animate__animated animate__zoomInDown": ""}>
                     <h2> Projects </h2>
                     <p /*Use bootsSrap TAB to not only have tabs but project cards*/> sample description, CHANGE THIS DESCRIPTION TO SUMAMRIZE</p>
                     </div>}
