@@ -1,4 +1,6 @@
-import { Container, Tab, Col, Row, Nav } from "react-bootstrap";
+import { Modal, Container, Tab, Col, Row, Nav } from "react-bootstrap";
+
+import { useState } from "react";
 
 import { ProjectCard } from "./ProjectCard";
 // images for dean's list
@@ -15,6 +17,17 @@ import googleAnalyticsCertificate from "../assets/img/Google_DataAnalytics_Certi
 import colorSharp2 from "../assets/img/color-sharp2.png";
 
 export const Accomplishments = () => {
+
+    // initiate Modal
+    const [open, setOpen] = useState(false);
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const handleOpen = () => {
+        setOpen(true);
+    }
+
+
     // create array for the accomplishments, start with degree
     const Accomplishments = [
         {

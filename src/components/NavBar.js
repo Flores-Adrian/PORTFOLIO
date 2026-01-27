@@ -33,6 +33,14 @@ export const NavBar = () => {
         setActiveLink(value);
     }
 
+    // this function is to guide user to contact form
+    const scrollToConnect = () => {
+        const section = document.getElementById("connect");
+        if (section) {
+            section.scrollIntoView({ behavior : 'smooth'});
+        }
+    };
+
     return (
         // add condition to see if it's scrolled, if not leave as is for the navbar
         <Navbar expand="lg" className={scrolled ? "scrolled":""}>
@@ -51,7 +59,7 @@ export const NavBar = () => {
                         <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
                         <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link' } onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
                         <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
-
+                        <Nav.Link href="#accomplishments" className={activeLink === 'accomplishments' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('accomplishments')}> Accomplishments</Nav.Link>
                     </Nav>
                     <span className="navbar-text">
                         <div className="social-icon">
@@ -59,7 +67,7 @@ export const NavBar = () => {
                             <a href="https://github.com/Flores-Adrian"><img src={GitHub} alt="" /></a>
                             <a href="#"><img src={navIcon3} alt="" /></a>
                         </div>
-                        <button className="vvd" onClick={() => console.log('connect')}>
+                        <button className="vvd" onClick={scrollToConnect}>
                             <span>Let's Connect</span>
                         </button>
                     </span>

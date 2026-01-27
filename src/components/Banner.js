@@ -76,6 +76,13 @@ export const Banner = () => {
         }
     }
 
+    // create  onclick for contact
+    const scrollToConnect = () => {
+        const section = document.getElementById('connect');
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth'});
+        }
+    };
 
     return (
         <section className="banner" id="home">
@@ -105,7 +112,7 @@ export const Banner = () => {
                                 </p>
 
                                 {/**THIS BUTTON WILL BE USING BOOTSTRAP ICONS */}
-                                <button onClick={() => console.log('connect')}>
+                                <button onClick={scrollToConnect}>
                                     Let's connect <ArrowRightCircle size={25} />
                                 </button>
                             </div>}
