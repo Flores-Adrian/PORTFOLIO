@@ -158,8 +158,8 @@ export const Skills = () => {
                                         <h5> Pandas </h5>
                                     </div>
                                     <div className="item">
-                                        <img src={matplotlibLogo} alt="Image" />
-                                        <h5> Matplotlib </h5>
+                                        <img src={sql_logo} alt="Image" />
+                                        <h5> SQL </h5>
                                     </div>
                                     <div className="item">
                                         <img src={excelLogo} alt="Image" />

@@ -458,6 +458,7 @@ cover is background size for best postioning
   text-align: center;
 }
 
+
 .project p {
   color: #B8B8B8;
   font-size: 18px;
@@ -477,7 +478,7 @@ cover is background size for best postioning
 }
 
 .project .nav.nav-pills .nav-item {
-  width: 33.33333%
+  width: 33.33333%;
 }
 
 /* if not active then the tab is transparent */
@@ -593,6 +594,87 @@ cover is background size for best postioning
   width: 35%;
   right: 0;
   z-index: -4;
+}
+/* --------------------------------- THIS IS THE ACCOMPLISHMENTS SECTION STYLING --------------- */
+
+
+.accomplishment {
+  padding: 80px 0;
+  position: realtive;
+  background-color: navy;
+}
+.accomplishment h2 {
+  font-size: 45px;
+  font-weight: 700;
+  text-align:center;
+}
+.accomplishment p {
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px auto 30px auto;
+  text-align: center;
+  width: 56%;
+}
+.accomplishment .nav.nav-pills {
+  width: 72%;
+  margin: 0 auto;
+  border-radius: 50px;
+  background-color: rgb(255 255 255 / 10%);
+  overflow: hidden;
+}
+.accomplishment .nav.nav-pills .nav-item {
+  width: 33.33333%;
+}
+.accomplishment .nav.nav-pills .nav-link {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 17px 0;
+  color: #fff;
+  width: 100%;
+  font-size: 17px;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  text-align: center;
+  z-index: 0;
+}
+
+/* this is the styling/color for the tabs */
+.accomplishment .nav.nav-pills .nav-link::before{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: 0.3s ease-in-out
+}
+/* this activates the tab styling above this*/
+.accomplishment .nav.nav-pills .nav-link.active::before {
+  width: 100% !important;
+}
+/* this is the outline for the tab and their color*/
+.accomplishment .nav.nav-pills .nav-link.active {
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+.nav-link#accomplishments-tabs-tab-firstAcc{
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 55px 0px 0px 55px;
+}
+
+.nav-link#accomplishments-tabs-tab-secondAcc {
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.nav-link#accomplishments-tabs-tab-thirdAcc{
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0 55px 55px 0;
 }
 
 /* ---------------------------------- THIS IS THE CONTACT FORM STYLING -------------- */
