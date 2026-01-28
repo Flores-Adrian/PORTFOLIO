@@ -1,8 +1,9 @@
-import { Modal, Container, Tab, Col, Row, Nav } from "react-bootstrap";
-
+import { Modal, Container, Tab, Col, Row, Nav, Button } from "react-bootstrap";
 import { useState } from "react";
 
 import { ProjectCard } from "./ProjectCard";
+import { deansListItems, educationItems, courseItems } from "../data/accomplishmentsData";
+
 // images for dean's list
 import sampleImage from "../assets/img/2022_Deans_List.png";
 import deansList_2022 from "../assets/img/2022_Deans_List.png";
@@ -19,63 +20,21 @@ import colorSharp2 from "../assets/img/color-sharp2.png";
 export const Accomplishments = () => {
 
     // initiate Modal
-    const [open, setOpen] = useState(false);
+    // contorls if modal is visible or not
+    const [openModal, setOpenModal] = useState(false);
+    // this will contain the title, description, imgURL, etc. that was clicked
+    const [selectedItem, setSelectedItem] = useState(null);
+
     const handleClose = () => {
-        setOpen(false);
-    };
-    const handleOpen = () => {
-        setOpen(true);
+        setOpenModal(false);
+        setSelectedItem(null);
     }
 
+    const handleOpen = (item) => {
+        setOpenModal(true);
+        setSelectedItem(item);
+    }
 
-    // create array for the accomplishments, start with degree
-    const Accomplishments = [
-        {
-            title: "Dean's List - Academic Year 2022",
-            description: "Recognized for sustained academic excellence in Computer Science coursework at CSULA!",
-            imgURL: deansList_2022,
-        },
-        {
-            title: "Dean's List - Spring 2024",
-            description: "Awarded for outstanding academic performance in the Computer Science Program at CSULA!",
-            imgURL: deanList_2024,
-        },
-        {
-            title: " (CHANGE PICTURE) Dean's List - Academic Year 2025",
-            description: "Earned Dean's List honors for consistent academic achievement in Computer Science at CSULA!",
-            imgURL: sampleImage,
-        }
-    ];
-    
-    // create array for bachelor's and fellowship
-    const Educations = [
-        {
-            title: "B.S. in Computer Science - CSULA",
-            // description: "Earched a Bachelor of Science in Computer Science with a strong focus on software development, data systems, and analytical problem-solving",
-            description: "Bachelor of Sience in Computer Science with a focus on software development, data systems, and analytical problem-sovling.",
-            imgURL: bachelorDegree,
-        },
-        {
-            title: "COOP Data Analytics Fellowship - Certificate",
-            // description: "Selected for and completed an intensive data analytics fellowship covering SQL, Tableau, data visualization, and applied business analytics in a collaborative cohort environemtn.",
-            description: "Completed an intensive data analytics fellowship covering SQL, Tableau, data visualization, and applied business analytics.",
-            imgURL: coopFellowDegree,
-        }
-    ]
-
-    // create array for course that have been completed
-    const Courses = [
-        {
-            title: "CodePath - Intermediate Technical Interview Prep (TIP102)",
-            description: "Completed an intensive interview preparation course focused on data structures, algorithms, and problem-solving patterns in Java and Python",
-            imgURL: codePathCertificate,
-        },
-        {
-            title: "Google Data Analytics Certificate - Coursera",
-            description: "Earned Google's Data Analytics Professional Certificate, focused on SQL, Tablleau, data, visualization, and applied analytics.",
-            imgURL: googleAnalyticsCertificate,
-        }
-    ]
     
     return(
         <section className="accomplishment" id="accomplishments">
@@ -105,50 +64,96 @@ export const Accomplishments = () => {
                                 <Tab.Pane eventKey="firstAcc">
                                     <Row>
                                         {
-                                            Educations.map((education, index) =>{
-                                                return (
-                                                    <ProjectCard
-                                                        key={index}
-                                                        {...education}
-                                                    />
+                                            educationItems.map((education) => (
+                                                <ProjectCard
+                                                    key={education.id}
+                                                    {...education}
+                                                    onClick={() => handleOpen(education)}
+                                                />
                                                 )
-                                            })
+                                            )
                                         }
                                     </Row>
                                 </Tab.Pane>
+
                                 <Tab.Pane eventKey="secondAcc">
                                     <Row>
                                         {
-                                            Courses.map((course, index) => {
-                                                return (
-                                                    <ProjectCard
-                                                        key={index}
-                                                        {...course}
-                                                    />
+                                            courseItems.map((course) => (
+                                                
+                                                <ProjectCard
+                                                    key={course.id}
+                                                    {...course}
+                                                    onClick = {() => handleOpen(course)}
+                                                />  
                                                 )
-                                            })
+                                            )
                                         }
                                     </Row>
                                 </Tab.Pane>
+
                                 <Tab.Pane eventKey="thirdAcc">
                                     <Row>
                                         {
-                                            Accomplishments.map((accomplishment, index) =>{
-                                                return (
-                                                    <ProjectCard
-                                                        key={index}
-                                                        {...accomplishment}
+                                            deansListItems.map((deansList) =>(
+                                                <ProjectCard
+                                                    key={deansList.id}
+                                                    {...deansList}
+                                                    onClick = {() => handleOpen(deansList)}
                                                     />
-                                                )
-                                            })
+                                                
+                                            ))
                                         }
                                     </Row>
                                 </Tab.Pane>
                             </Tab.Content>
                         </Tab.Container>
+
+                        {/**  this is on shared modal (maybe change?) */}
+                        <Modal show={openModal} onHide={handleClose} centered size="lg">
+                            
+                            <Modal.Header closeButton className="accomplishment-modal-card">
+                                <Modal.Title className="accomplishment-modal-title" >
+                                    {selectedItem?.title ?? ""}
+                                </Modal.Title>
+                            </Modal.Header>
+
+                            <Modal.Body className="accomplishment-modal-card">
+                                {/** Show image IF THE selected item has a imgURL */}
+                                {selectedItem?.imgURL && (
+                                    <img
+                                        className="accomplishment-modal-img"
+                                        src={selectedItem.imgURL}
+                                        alt={selectedItem.title}
+                                    />
+                                )}
+                                <p className="accomplishment-model-description">
+                                    {selectedItem?.description}
+                                </p>
+
+                                {/** Show details IF THE selected item has any extra details */}
+                                {selectedItem?.details?.length > 0 && (
+                                    <ul className="accomplishment-modal-details">
+                                        {selectedItem.details.map((detail, index) => (
+                                            <li key={index}>
+                                                {detail}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </Modal.Body>
+
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={handleClose} className="modal-close-btn" >
+                                    Close
+                                </Button>
+                            </Modal.Footer>
+                        </Modal>
+
                     </Col>
                 </Row>
             </Container>
+            
             <img className="background-image-right" src={colorSharp2}></img>
         </section>
     );

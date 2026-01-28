@@ -540,6 +540,7 @@ cover is background size for best postioning
   border-radius: 30px;
   overflow: hidden;
   margin-bottom: 24px;
+  cursor: pointer;
 }
 
 .proj-imgbx::before {
@@ -600,7 +601,7 @@ cover is background size for best postioning
 
 .accomplishment {
   padding: 80px 0;
-  position: realtive;
+  position: relative;
   background-color: navy;
 }
 .accomplishment h2 {
@@ -675,6 +676,46 @@ cover is background size for best postioning
 .nav-link#accomplishments-tabs-tab-thirdAcc{
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 0 55px 55px 0;
+}
+
+/* this is the styling for the image when Modal is used */
+.accomplishment-modal-img {
+  width: 60%;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.modal-close-btn{
+  width: 100%;
+}
+.accomplishment modal {
+  background-color: black;
+}
+
+/* This is the styling for the MODAL CARDS 
+.accomplishment-modal-card {
+  background-color: green;
+}
+*/
+
+.accomplishment-modal-title {
+  display: flex;
+  margin-left: auto;
+}
+/* this is the for description once opened*/
+.accomplishment-model-description {
+  margin-top: 20px;
+}
+.accomplishment-modal-details {
+  margin: 0;
+  padding-left: 18px;
+}
+/* this is for how much space there is between each bullet point*/
+.accomplishment-modal-details li {
+  margin-bottom: 6px;
 }
 
 /* ---------------------------------- THIS IS THE CONTACT FORM STYLING -------------- */
