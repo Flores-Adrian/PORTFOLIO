@@ -68,6 +68,7 @@ export const Accomplishments = () => {
                                                 <ProjectCard
                                                     key={education.id}
                                                     {...education}
+                                                    colMd={6}
                                                     onClick={() => handleOpen(education)}
                                                 />
                                                 )
@@ -84,6 +85,7 @@ export const Accomplishments = () => {
                                                 <ProjectCard
                                                     key={course.id}
                                                     {...course}
+                                                    colMd={6}
                                                     onClick = {() => handleOpen(course)}
                                                 />  
                                                 )
@@ -99,6 +101,7 @@ export const Accomplishments = () => {
                                                 <ProjectCard
                                                     key={deansList.id}
                                                     {...deansList}
+                                                    colMd={4}
                                                     onClick = {() => handleOpen(deansList)}
                                                     />
                                                 
@@ -110,7 +113,7 @@ export const Accomplishments = () => {
                         </Tab.Container>
 
                         {/**  this is on shared modal (maybe change?) */}
-                        <Modal show={openModal} onHide={handleClose} centered size="lg">
+                        <Modal show={openModal} onHide={handleClose} centered size="lg" className="accomplishment-modal">
                             
                             <Modal.Header closeButton className="accomplishment-modal-card">
                                 <Modal.Title className="accomplishment-modal-title" >
@@ -128,7 +131,9 @@ export const Accomplishments = () => {
                                     />
                                 )}
                                 <p className="accomplishment-model-description">
+                                    <b>
                                     {selectedItem?.description}
+                                    </b>
                                 </p>
 
                                 {/** Show details IF THE selected item has any extra details */}

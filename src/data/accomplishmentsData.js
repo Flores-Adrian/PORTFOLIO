@@ -18,8 +18,9 @@ export const deansListItems = [
         description: "Recognized for sustained academic excellence in Computer Science coursework at CSULA!",
         imgURL: deansList_2022,
         details: [
-            "EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point",
-            "EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point",
+            "Recognized for sustained academic excellence across the academic year in the Computer Science program at CSULA.",
+            "Completed technically rigorous coursework emphasizing software development, data structures, and analytical problem-solving.",
+            "Demonstrated consistent academic performance across multiple semesters in a STEM-focused curriculum.",
         ],
     },
     {
@@ -28,8 +29,9 @@ export const deansListItems = [
         description: "Awarded for outstanding academic performance in the Computer Science Program at CSULA!",
         imgURL: deanList_2024,
         details: [
-            "EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point",
-            "EXAMPLE bullet point EXAMPLE bullet point",
+            "Awarded Dean's List honors for outstanding academic performance during the Spring 2024 semester in Computer Science at CSULA.",
+            "Excelled in technically rigorous, upper-division corusework focused on software engineering and data-driven systems.",
+            "Demonstrated strong analytical and problem-solving skills through coursework and projects.",
         ],
     },
     {
@@ -38,8 +40,9 @@ export const deansListItems = [
         description: "Earned Dean's List honors for consistent academic achievement in Computer Science at CSULA!",
         imgURL: sampleImage,
         details: [
-            "EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point",
-            "EXAMPLE bullet point EXAMPLE bullet point",
+            "Earned Dean's List recognition for consistent academic achievement throughout the 2025 academic year in Computer Science.",
+            "Maintained high academic performance while completing advanced, upper-division technical coursework",
+            "Demonstrated academic discipline and technical growth across a full academic year",
         ],
     }
 ];
@@ -72,7 +75,7 @@ export const courseItems = [
     {
         id: "codePath-certificate",
         title: "CodePath - IntermediateTechnical Interview Prep (TIP 102)",
-        description: "Completed an intensive interview preparation course focused on data structures, algorithms, and problem-solving patterns in Java and Python",
+        description: "Completed an intensive interview preparation course focused on data structures, algorithms, and problem-solving patterns in Java and Python.",
         imgURL: codePathCertificate,
         details: [
             "EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point",

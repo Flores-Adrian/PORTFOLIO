@@ -6,9 +6,15 @@ import { Col } from "react-bootstrap";
 // "md" is for 3 contents per row
 // ADDED: onClick to be able to create Modal for each individual card
 // UPDATED: <div> now has a onCLick and acts like a button to be able to click
-export const ProjectCard = ({title, description, imgURL, onClick }) => {
+export const ProjectCard = ({
+    title,
+    description,
+    imgURL,
+    onClick,
+    colMd = 4, // (we leave this as 4 since we want the default cards to be 3perROW)
+}) => {
     return (
-        <Col sm={6} md={4}>
+        <Col xs={12} md={colMd}>
             <div 
                 className="proj-imgbx"
                 role="button"
