@@ -78,8 +78,11 @@ export const courseItems = [
         description: "Completed an intensive interview preparation course focused on data structures, algorithms, and problem-solving patterns in Java and Python.",
         imgURL: codePathCertificate,
         details: [
-            "EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point",
-            "EXAMPLE bullet point EXAMPLE bullet point",
+            "Solved LeetCode-style algorithmic problems using Java and Python in time and collaborative settings.",
+            "Practiced core data structures and algorithms including arrays, hash maps (dictionaries), linked lists, stacks, queues, trees, and graphs.",
+            "Applied recursion, divide-and-conquer strategies, and Binary Tree/Graph traversal techniques.",
+            "Analyzed solutions using Big-O time and space complexity to evaluate performance tradeoffs.",
+            "Completed structured weekly problem sets by tackling multiple Easy-Hard level coding challenges within time limits, with mentor guided mock interviews and feedback."
         ],
     },
     {
@@ -88,8 +91,11 @@ export const courseItems = [
         description: "Earned Google's Data Analytics Professional Certificate, focused on SQL, Tableau, data, visualization, and applied analytics.",
         imgURL: googleAnalyticsCertificate,
         details: [
-            "EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point",
-            "EXAMPLE bullet point EXAMPLE bullet point",
+            "Worked with SQL, spreadsheets (Excel), and R to clean, analyze, and transform datasets as part of guided coursework.",
+            "Built Tableau dashboards and visualizations to communicate insights from structured case studies",
+            "Applied data cleaning techniques including data validation, formatting, and filtering",
+            "Completed hand-on lessons covering the end-to-end data analysis process, from data preparation to visualization,", 
+            "Developed a foundation in analytics workflows that later supported applied work in a professional fellowship setting.",
         ],
     },
 ];
