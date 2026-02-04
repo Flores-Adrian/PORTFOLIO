@@ -3,18 +3,6 @@ import { useState } from "react";
 
 import { ProjectCard } from "./ProjectCard";
 import { deansListItems, educationItems, courseItems } from "../data/accomplishmentsData";
-
-// images for dean's list
-import sampleImage from "../assets/img/2022_Deans_List.png";
-import deansList_2022 from "../assets/img/2022_Deans_List.png";
-import deanList_2024 from "../assets/img/2024_Spring_Deans_List.png";
-// images for education
-import bachelorDegree from "../assets/img/Bachelors_Degree.png";
-import coopFellowDegree from "../assets/img/Fellowship_Completion.png";
-// images for courses
-import codePathCertificate from "../assets/img/CodePath_TIP102_Certificate.png";
-import googleAnalyticsCertificate from "../assets/img/Google_DataAnalytics_Certificate.png";
-
 import colorSharp2 from "../assets/img/color-sharp2.png";
 
 export const Accomplishments = () => {

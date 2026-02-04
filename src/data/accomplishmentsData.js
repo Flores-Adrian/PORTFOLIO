@@ -55,8 +55,11 @@ export const educationItems = [
         description: "Bachelor of Science in Computer Science with a focus on software development, data systems, and analytical problem-solving.",
         imgURL: bachelorDegree,
         details: [
-            "EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point",
-            "EXAMPLE bullet point EXAMPLE bullet point",
+            "Completed upper-division corusework in software engineering, data structures, databases, and systems design.",
+            "Applied computer science concepts through project-based assignment and collaborative development work",
+            "Built a strong foundation in programming, data managment, and analytical problem-sovling",
+            "Graduated with a strong GPA while completing a rigorous STEM-focused curriculum.",
+
         ],
     },
     {
@@ -65,8 +68,10 @@ export const educationItems = [
         description: "Completed an intensive data analytics fellowship covering SQL, Tableau, data visualization, and applied business analytics.",
         imgURL: coopFellowDegree,
         details: [
-            "EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point EXAMPLE bullet point",
-            "EXAMPLE bullet point EXAMPLE bullet point",
+            "Selected for and completed a chort-based data analytics fellowhsip with structured mentorship and guided instructions",
+            "Developed technical skills in SQL, Tableau, spreadsheets,a nd data visualization through hands-exercises.",
+            "Applied data analysis concepts to real-world, business-focused care studies with feedback from mentors.",
+            "Participated in collaborative sessions focused on data storytelling through dashboards and presentations, while strengthening communication and problem-solving skills",
         ],
     },
 ];

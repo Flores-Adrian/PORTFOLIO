@@ -68,6 +68,7 @@ export const Skills = () => {
                                 <p /**Carousel is infinite is so it can go around and come back */>
                                 <b> MAYBE ADD DESCRIPTION HERE? </b>
                                 </p>
+                                { /** look into Splide.js with autoscroll or framer motion! */}
                                 <Carousel responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={2000} className="skill-slider">
                                     <div className="item">
                                         <img src={pythonLogo} alt="Image"/>

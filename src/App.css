@@ -449,7 +449,20 @@ cover is background size for best postioning
 .project {
   padding: 80px 0;
   position: relative;
-  background-color: black;
+
+}
+.aboutMe {
+  background-color: grey;
+}
+
+.aboutMe-Pictures img {
+  border-radius: 20px;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.aboutMe-Pictures img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(210, 7, 7, 0.35);
 }
 
 .project h2 {
@@ -603,7 +616,6 @@ cover is background size for best postioning
 .accomplishment {
   padding: 80px 0;
   position: relative;
-  background-color: navy;
 }
 
 .accomplishment .proj-imgbx--large{
@@ -701,8 +713,10 @@ cover is background size for best postioning
 }
 
 /* This is the styling for the MODAL CARDS */
+/* tried "to bottom right" */
+/*  160deg ----  linear-gradient(to right, red, orange, yellow, green, blue); */
 .accomplishment-modal .modal-content {
-  background: linear-gradient(to bottom right, #FCB237 50%, #000 50%);
+  background: linear-gradient(to top, black 30%, orange 70%, yellow 115%);
   color: white;
   border-radius: 24px;
   border: 1px solid rgb(0, 0, 0);
@@ -711,6 +725,7 @@ cover is background size for best postioning
 .accomplishment-modal .modal-header,
 .accomplishment-modal .modal-footer {
   border-color: rgba(255, 255, 255, 0.03);
+  color: black;
 }
 
 .accomplishment-modal-title {
