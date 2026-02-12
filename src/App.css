@@ -274,10 +274,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
 /* this is for the format, the image is the background image CHANGE LATER
 cover is background size for best postioning
 */
+
 .banner {
   margin-top: 0;
   padding: 260px 0 100px 0;
-  background-image: url('./assets/img/banner-bg.png');
+  background-image: url("./assets/img/spaceGif.gif");
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -367,6 +368,7 @@ cover is background size for best postioning
 .skill {
   padding: 0 0 50px 0;
   position: relative;
+  background-image: url("./assets/img/spaceGif.gif");
 }
 
 /* This is for the skill box alone */
@@ -449,10 +451,12 @@ cover is background size for best postioning
 .project {
   padding: 80px 0;
   position: relative;
+  
 
 }
 .aboutMe {
   background-color: grey;
+  background-image: url("./assets/img/spaceGif.gif");
 }
 
 .aboutMe-Pictures img {
@@ -616,6 +620,7 @@ cover is background size for best postioning
 .accomplishment {
   padding: 80px 0;
   position: relative;
+  
 }
 
 .accomplishment .proj-imgbx--large{
