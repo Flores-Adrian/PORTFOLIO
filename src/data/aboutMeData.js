@@ -1,6 +1,7 @@
 import pictureOfMe from "../assets/img/pictureOfMe.jpg";
-import secondPictureOfMe from "../assets/img/DjangoImg.png";
-import thirdPictureOfMe from "../assets/img/Excel-Logo.png";
+import secondPictureOfMe from "../assets/img/secondPictureOfMe.jpeg";
+import thirdPictureOfMe from "../assets/img/picture.JPEG";
+
 
 // this is for the ABOUT ME SECTION AND THE LONG PARAGRAPHS
 export const aboutMeItems = {
@@ -14,5 +15,6 @@ export const aboutMeItems = {
 
         "I'm currently seeking software engineering or technically focused roles where I can continue growing while contributing to teams that value curiousity, mentorship, and impact.",
     ],
-    imgURL: pictureOfMe,
+    images: [pictureOfMe, secondPictureOfMe, thirdPictureOfMe],
+
 };
