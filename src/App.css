@@ -363,11 +363,82 @@ cover is background size for best postioning
   border-right: 0.08em solid #666;
 }
 
+/* -------------- THIS IS ALL FOR THE ABOUT ME SECTION STYLING ------------------ */
+.aboutMe {
+  background-color: grey;
+  background-image: url("./assets/img/spaceGif.gif");
+}
+
+.aboutMe-title {
+  font-size: 45px;
+  font-weight: 700;
+  text-align: center;
+  padding: 22px;
+  background: rgba(170, 54, 124, 0.5);
+  border-radius: 64px;
+}
+
+/*   background: rgba(173, 158, 43, 0.5); */
+.aboutMe-summary {
+  font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 1.5em;
+  background: rgba(173, 158, 43, 0.5);
+  border-radius: 64px;
+  padding: 40px 15px;
+  width: 110%;
+  margin-top: 50px;
+}
+
+.aboutMe-cardStack {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  aspect-ratio: 4 / 5;
+  margin-top: 50px;
+}
+
+.aboutMe-card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(222, 2, 230, 0.35);
+  user-select: none;
+  cursor: grab;
+}
+
+.aboutMe-card:active {
+  cursor: grabbing;
+}
+.aboutMe-card.isTop {
+  cursor: grab;
+  touch-action: pan-y;
+}
+.aboutMe-card.isTop:active {
+  cursor: grabbing;
+}
+
+
+.aboutMe-Pictures img {
+  border-radius: 20px;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+
+.aboutMe-Pictures img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(210, 7, 7, 0.35);
+}
+
 /* -------------- THIS IS ALL FOR THE SKILLS SECTION STYLING -------------------- */
 
 .skill {
   padding: 0 0 50px 0;
   position: relative;
+  padding-top: 50px;
   background-image: url("./assets/img/spaceGif.gif");
 }
 
@@ -483,52 +554,6 @@ cover is background size for best postioning
   position: relative;
   
 
-}
-.aboutMe {
-  background-color: grey;
-  background-image: url("./assets/img/spaceGif.gif");
-}
-
-.aboutMe-cardStack {
-  position: relative;
-  width: 100%;
-  max-width: 460px;
-  margin: 0 auto;
-  aspect-ratio: 4 / 5;
-}
-
-.aboutMe-card {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 22px;
-  box-shadow: 0 18px 40px rgba(222, 2, 230, 0.35);
-  user-select: none;
-  cursor: grab;
-  touch-action: pan-y;
-}
-
-.aboutMe-card:active {
-  cursor: grabbing;
-}
-.aboutMe-card.isTop {
-  cursor: grab;
-}
-.aboutMe-card.isTop:active {
-  cursor: grabbing;
-}
-
-
-.aboutMe-Pictures img {
-  border-radius: 20px;
-  transition: transform 250ms ease, box-shadow 250ms ease;
-}
-
-.aboutMe-Pictures img:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(210, 7, 7, 0.35);
 }
 
 .project h2 {

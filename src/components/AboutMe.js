@@ -13,42 +13,52 @@ function SwipeCardStack({ images = [] }) {
         setCards(images);
     }, [images]);
 
-    // this would be the motion value for the TOP CARD
+    // when the top card changes, the new top card will reuse this x value
     const x = useMotionValue(0);
+
+    // As x moves left or right, slightly rotate it giving it a CARD FLICK feeling
     const rotate = useTransform(x, [-200, 200], [-12, 12]);
+    
+    // THIS GIVES THE IMAGES A FADING EFFECT
     const opacity = useTransform(x, [-220, 0, 220], [0.6, 1, 0.6]);
 
-    // throws the card offscreen, then rotate the array
+    // throws the card offscreen, then move to the back of the deck
     const throwCard = async (direction) => {
         //directions: left = -1  :  right = +1
         const targetX = direction * 500;
 
-        // Animate current top card offscreen
+        // Animate current top card offscreen with the animation easeOut for value "x"
         await animate(x, targetX, { duration: 0.25, ease: "easeOut" });
 
-        // move first card to the end
+        // Roate the array, takes first card and push to end
         setCards((prev) => {
             const [first, ...rest] = prev;
             return [...rest, first];
         });
         
-        // reset the motion value for new card that is on top now
+        // IMPORTANT...reset x so that the next top card is CENTERED
+        // THIS IS NEEDED, or w/o it the top card could have a different x position that is inherited
         x.set(0);
     };
 
+    // this is called when the user releases the drag
     const onDragEnd = (_, info) => {
+        // how far the user drags the img
         const swipeDistance = info.offset.x;
+        // how fast the user flicked the img
         const swipeVelocity = info.velocity.x;
 
-        // either you can drag far enough or flick it fast enough
+        // trigger swipe by eitheri dfragging it far enough or flicked fast enough
         const shouldSwipe = Math.abs(swipeDistance) > 120 || Math.abs(swipeVelocity) > 800;
 
+        // this checks if the user did not swip enough, meaning the img goes back to center
         if (!shouldSwipe) {
             // snap back
             animate(x, 0, { type: "spring", stiffness: 300, damping: 25 });
             return;
         }
-
+        
+        // determines which direction to throw the card to (left or right)
         const direction = swipeDistance > 0 ? 1 : -1;
         throwCard(direction);
     };
@@ -62,8 +72,12 @@ function SwipeCardStack({ images = [] }) {
                     const zIndex = 100 - index;
 
                     // depth styling for the stack (cards behind the top)
-                    const scale = 1 - index * 0.05;
-                    const y = index * 12;
+                    // the higher it is the smaller the back cards get
+                    const scale = 1 - index * 0.01;
+                    // determine the how high/low you want the back images
+                    const y = index * 18;
+                    // change "PEEK" amount for background images
+                    const xOffset = index * 50;
 
                     return (
                         <motion.img 
@@ -71,16 +85,20 @@ function SwipeCardStack({ images = [] }) {
                             src={src}
                             alt=""
                             className={`aboutMe-card ${isTop ? "isTop" : ""}`}
-                            // Top card use motion value while others are static stacked transforms
+                            // Top card uses the motion value x and back cards used fixed values (x/y/scale)
+                            // x/y/scale is USED B/C Framer Motion can consistently apply the offsets after each cycle
                             style={
                                 isTop
                                 ? { x, rotate, opacity, zIndex }
-                                : { transform: `translateY(${y}px) scale(${scale})`, zIndex }
+                                : { x: xOffset, y, scale, zIndex }
                             }
+                            // allows only top card to be dragged
                             drag={isTop ? "x" : false }
                             dragConstraints={{ left: 0, right: 0 }}
                             dragElastic={0.18}
                             dragSnapToOrigin={false}
+                            // when new card is top, it reuses the same motion value "x" and resets
+                            onDragStart={isTop ? () => x.set(0) : undefined} // hard reset x everytime the top card is grabbed
                             onDragEnd={isTop ? onDragEnd : undefined}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
