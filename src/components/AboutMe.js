@@ -1,8 +1,37 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { aboutMeItems } from "../data/aboutMeData";
+import { aboutMeItems, workExperienceItems } from "../data/aboutMeData";
 import colorSharp from "../assets/img/color-sharp.png";
 import { AnimatePresence, motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useState } from "react";
+
+/** 
+ * Renders either an image or a Youtube video based on MEDIA TYPE
+*/
+function CardMedia ({ item }) {
+    if (item.type === "youtube") {
+        return (
+            <div className="aboutMe-video">
+                <iframe
+                    src={item.src}
+                    title={item.title || "Youtube Video"}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscrope; picture-in-picture"
+                    allowFullScreen
+                />
+            </div>
+        );
+    }
+
+    // this would just be the default image card (pictures)
+    return (
+        <img
+            src={item.src}
+            alt={item.alt || ""}
+            draggable="false"
+        />
+    );
+}
+
 
 // ------------------- CARD STACK ANIMATION -----------------------
 function SwipeCardStack({ images = [] }) {
@@ -103,6 +132,7 @@ function SwipeCardStack({ images = [] }) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
+                            // animation for how big the image gets when you tap on, higher the bigger
                             whileTap={isTop ? { scale: 1.02 } : undefined}
                         />
                     );
@@ -183,6 +213,59 @@ export const AboutMe = () => {
                     {/** RIGHT SIDE */}
                     <Col md={6} className="aboutMe-Pictures">
                             <SwipeCardStack images={aboutMeItems.images} />
+                    </Col>
+                </Row>
+
+                {/** ------------------ THIS IS WORK EXPERIENCE --------------------- */}
+                <Row className="align-items-center">
+
+                    {/** LEFT SIDE */}
+                    <Col md={6}>
+                            <row>
+                                
+                                <h1 className="aboutMe-LeadershipTitle">
+                                    Work Experience
+                                </h1>
+                            </row>
+                            <row>
+                                <motion.div
+                                    className="aboutMe-summary"
+                                    variants={containerVariants}
+                                    initial="hidden"
+                                    whileInView="show"
+                                    viewport={{ once: true, amount: 0.35 }}
+                                >
+                                    <div className="aboutMe-summaryTitle">
+                                        <h2> 
+                                            Robotics & Arduino Instructor
+                                        </h2>
+                                        <h4>
+                                            Whizara | 2024 - Present
+                                        </h4>   
+                                    </div>
+                                    <motion.ul
+                                        className="aboutMe-bullets"
+                                        variants={containerVariants}
+                                        initial="hidden"
+                                        whileInView="show"
+                                        viewport={{ once: true, amount: 0.35 }}
+                                    >
+                                        {workExperienceItems.description.map((paragraph, index) =>(
+                                            <motion.li key={index} variants={paragraphVariants}>{paragraph}</motion.li>
+                                        ))}
+                                    </motion.ul>
+                                </motion.div>
+                            </row>
+                    </Col>
+
+                    {/** RIGHT SIDE */}
+                    <Col md={6} className="aboutMe-Pictures">
+                            <SwipeCardStack images={workExperienceItems.images} />
+                    </Col>
+
+                    {/** RIGHT SIDE */}
+                    <Col md={6} className="aboutMe-Leadership-Pictures">
+                            <h1> RIGHT PICTURE HERE</h1>
                     </Col>
                 </Row>
             </Container>

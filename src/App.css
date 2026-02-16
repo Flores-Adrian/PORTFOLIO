@@ -378,6 +378,17 @@ cover is background size for best postioning
   border-radius: 64px;
 }
 
+.aboutMe-LeadershipTitle {
+  font-size: 45px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 30px;
+  padding: 0.5px;
+  background: rgba(170, 54, 124, 0.5);
+  border-radius: 64px;
+  width: 110%;
+}
+
 /*   background: rgba(173, 158, 43, 0.5); */
 .aboutMe-summary {
   font-size: 18px;
@@ -388,6 +399,18 @@ cover is background size for best postioning
   padding: 40px 15px;
   width: 110%;
   margin-top: 50px;
+}
+
+.aboutMe-bullets {
+  margin: 14px  0 0 0;
+  padding-left: 1.25rem;
+  
+}
+
+.aboutMe-bullets li {
+  margin: 10px 0;
+  padding-left: 0.35rem; /* gap between bullet and text (28px)*/
+  line-height: 1.6;
 }
 
 .aboutMe-cardStack {

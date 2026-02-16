@@ -1,6 +1,9 @@
 import pictureOfMe from "../assets/img/pictureOfMe.jpg";
-import secondPictureOfMe from "../assets/img/secondPictureOfMe.jpeg";
-import thirdPictureOfMe from "../assets/img/picture.JPEG";
+import cumLaudePicture from "../assets/img/secondPictureOfMe.jpeg";
+import jpl_research_pic from "../assets/img/jpl_research_pic.jpeg";
+import arduino_Project from "../assets/img/arduino_happybday_proj.jpeg";
+import arduino_Second_Project from "../assets/img/arduino_simon_says_picture.jpeg";
+import arduino_Second_Project_Video from "../assets/img/jpl_research_pic.jpeg";
 
 
 // this is for the ABOUT ME SECTION AND THE LONG PARAGRAPHS
@@ -15,6 +18,19 @@ export const aboutMeItems = {
 
         "I'm currently seeking software engineering or technically focused roles where I can continue growing while contributing to teams that value curiousity, mentorship, and impact.",
     ],
-    images: [pictureOfMe, secondPictureOfMe, thirdPictureOfMe],
-
+    images: [pictureOfMe, cumLaudePicture, jpl_research_pic],
 };
+
+// this is for THE WORK EXPERIENCE SECTION
+export const workExperienceItems = {
+    id: "work-experience-section",
+    title: "Robotics & Arduino Instructor",
+    meta: "Whizara | 2024 - Present",
+    description: [
+        "Designed and delivered a custom Arduino curriculum for high school students (ages 15-18), teaching core embedded systems concepts using C++ and Arduino IDE/Cloud",
+        "Guided 5-10 students per cohort through hands-on hardware projects including sensors, LEDs, motors, and input/output systems",
+        "Translated complex technical concepts into interactive lessons using slides, live demonstrations, and real-time code walkthroughs",
+        "Mentored students thorugh problem-solving sessions, reinforcing algorithmic thinking and hardware-software integration",
+    ],
+    images: [arduino_Project, arduino_Second_Project, arduino_Second_Project_Video],
+}
