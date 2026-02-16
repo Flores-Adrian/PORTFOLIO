@@ -18,6 +18,12 @@ export const aboutMeItems = {
 
         "I'm currently seeking software engineering or technically focused roles where I can continue growing while contributing to teams that value curiousity, mentorship, and impact.",
     ],
+    /* media: [
+        { type: "image", src: pictureOfMe, alt=" Portrait "},
+        { type: "image", src: cumLaudePicture, alt=" Cum Laude "},
+        { type: "image", src: jpl_research_pic, alt=" JPL research "},
+    ],
+    */
     images: [pictureOfMe, cumLaudePicture, jpl_research_pic],
 };
 
@@ -32,5 +38,16 @@ export const workExperienceItems = {
         "Translated complex technical concepts into interactive lessons using slides, live demonstrations, and real-time code walkthroughs",
         "Mentored students thorugh problem-solving sessions, reinforcing algorithmic thinking and hardware-software integration",
     ],
-    images: [arduino_Project, arduino_Second_Project, arduino_Second_Project_Video],
-}
+    // medio objects: image AND youtube video
+    /* media: [
+        { type: "image", src: arduino_Project, alt: "Arduino Project 1" },
+        { type: "image", src: arduino_Second_Project, alt: "Arduino Project 2 "},
+        {
+            type: "youtube",
+            src: "https://youtu.be/i9VjTIryn6s?si=JxgUzKJIWvidEfGU",
+            title: "Simon Says Arduino Memory Game",
+        },
+    ],
+    */
+   images: [arduino_Project, arduino_Second_Project, arduino_Second_Project_Video],
+};
