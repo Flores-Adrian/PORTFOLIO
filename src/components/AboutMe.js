@@ -32,41 +32,40 @@ function CardMedia ({ item }) {
     );
 }
 
+// --------- CARD STACK ANIMATION W/ MEDIA FUNCTION ADDED AND item parameter -----------------
+function SwipeCardStack({ items = [] }) {
+    const [cards, setCards] = useState(items);
 
-// ------------------- CARD STACK ANIMATION -----------------------
-function SwipeCardStack({ images = [] }) {
-    const [cards, setCards] = useState(images);
+    // useEffect(() => {
+    //     setCards(items);
+    // }, [items]);
 
-    // keep cards in sync
-    useEffect(() => {
-        setCards(images);
-    }, [images]);
-
-    // when the top card changes, the new top card will reuse this x value
+    // when the top card changes, the new top card willl reuse this x value
     const x = useMotionValue(0);
-
-    // As x moves left or right, slightly rotate it giving it a CARD FLICK feeling
+    
+    // As x moves left/right, slightly rotate it giving it a CARD FLICK animation
+    // (maybe change [-200, 200] to -200, 500)
     const rotate = useTransform(x, [-200, 200], [-12, 12]);
     
-    // THIS GIVES THE IMAGES A FADING EFFECT
-    const opacity = useTransform(x, [-220, 0, 220], [0.6, 1, 0.6]);
+    // this GIVES THE IMAGES A FADING EFFECT
+    const opacity = useTransform(x, [-220 , 0, 320], [0.6, 1, 0.6]);
 
     // throws the card offscreen, then move to the back of the deck
     const throwCard = async (direction) => {
-        //directions: left = -1  :  right = +1
+        // directions: left = -1 : right = +1
         const targetX = direction * 500;
 
-        // Animate current top card offscreen with the animation easeOut for value "x"
+        // Animate current top card offscreen with the animation easeOut for value "x" and speed
         await animate(x, targetX, { duration: 0.25, ease: "easeOut" });
 
-        // Roate the array, takes first card and push to end
+        // Rotate the array, takes first card and push to end
         setCards((prev) => {
             const [first, ...rest] = prev;
             return [...rest, first];
         });
-        
-        // IMPORTANT...reset x so that the next top card is CENTERED
-        // THIS IS NEEDED, or w/o it the top card could have a different x position that is inherited
+
+        // IMPORTANT..reset x so that the next top card is CENTERED
+        // THIS IS  NEED, or w/o it the top card could have a different x position that is inherited
         x.set(0);
     };
 
@@ -77,16 +76,15 @@ function SwipeCardStack({ images = [] }) {
         // how fast the user flicked the img
         const swipeVelocity = info.velocity.x;
 
-        // trigger swipe by eitheri dfragging it far enough or flicked fast enough
+        // trigger swipe by either dragging it far enough or being flicked fast enough
         const shouldSwipe = Math.abs(swipeDistance) > 120 || Math.abs(swipeVelocity) > 800;
 
-        // this checks if the user did not swip enough, meaning the img goes back to center
+        // this checks if the user did not swipe enough which causes to go back in its orignal place
         if (!shouldSwipe) {
             // snap back
             animate(x, 0, { type: "spring", stiffness: 300, damping: 25 });
             return;
         }
-        
         // determines which direction to throw the card to (left or right)
         const direction = swipeDistance > 0 ? 1 : -1;
         throwCard(direction);
@@ -94,47 +92,44 @@ function SwipeCardStack({ images = [] }) {
 
     // return the animation for it
     return (
-        <div className="aboutMe-cardStack" aria-label="Photo card stack">
-            <AnimatePresence initial = {false}>
-                {cards.slice(0,3).map((src, index) => {
-                    const isTop = index === 0;
-                    const zIndex = 100 - index;
-
-                    // depth styling for the stack (cards behind the top)
-                    // the higher it is the smaller the back cards get
-                    const scale = 1 - index * 0.01;
-                    // determine the how high/low you want the back images
-                    const y = index * 18;
-                    // change "PEEK" amount for background images
-                    const xOffset = index * 50;
+        <div className="aboutMe-cardStack">
+            <AnimatePresence initial={false}>
+                {/** MAP THROUGH THE OBJECTS (3). Use unique ID or SRC as the key */}
+                {cards.slice(0, 3).reverse().map((item, index) =>{
+                    // UPDATED THIS INDEX PART
+                    const actualIndex = cards.indexOf(item);
+                    const isTop = actualIndex === 0;
+                    const zIndex = 100 - actualIndex;
+                    const scale = 1 - actualIndex * 0.01;
+                    const y = actualIndex * 18;
+                    const xOffset = actualIndex * 50;
 
                     return (
-                        <motion.img 
-                            key={src}
-                            src={src}
-                            alt=""
+                        // UPDATED KEY being unique to each img/video we ahd
+                        <motion.div
+                            key={item.src} // assuming src is unique
                             className={`aboutMe-card ${isTop ? "isTop" : ""}`}
-                            // Top card uses the motion value x and back cards used fixed values (x/y/scale)
-                            // x/y/scale is USED B/C Framer Motion can consistently apply the offsets after each cycle
-                            style={
+                            style = {
                                 isTop
                                 ? { x, rotate, opacity, zIndex }
                                 : { x: xOffset, y, scale, zIndex }
                             }
-                            // allows only top card to be dragged
-                            drag={isTop ? "x" : false }
+                            drag={isTop ? "x" : false}
                             dragConstraints={{ left: 0, right: 0 }}
-                            dragElastic={0.18}
+                            dragElastic={0.18} // how FAR YOU CAN SWIPE CARD/img
                             dragSnapToOrigin={false}
                             // when new card is top, it reuses the same motion value "x" and resets
                             onDragStart={isTop ? () => x.set(0) : undefined} // hard reset x everytime the top card is grabbed
                             onDragEnd={isTop ? onDragEnd : undefined}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            // animation for how big the image gets when you tap on, higher the bigger
+                            initial = {{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: isTop? 1 : scale }}
+                            exit={{ opacity: 0, exit: x > 0 ? 500 : -500 }}
+                            // animation for how big the image gets when you TAP ON, higher the bigger
                             whileTap={isTop ? { scale: 1.02 } : undefined}
-                        />
+                        >
+                            {/** call the new cardmedia function */}
+                            <CardMedia item={item} />
+                        </motion.div>
                     );
                 })}
             </AnimatePresence>
@@ -163,21 +158,7 @@ export const AboutMe = () => {
             transition: { duration: 0.45, ease: "easeOut" },
         },
     };
-    // ---------------- IMAGE CROSSFADE ----------------------
-    const [activeIndex, setActiveIndex] = useState(0);
 
-    useEffect(() => {
-        if(!aboutMeItems.images || aboutMeItems.images.length <= 1) {
-            return;
-        }
-
-        const timer = setInterval(() => {
-            setActiveIndex((prev) => (prev + 1) % aboutMeItems.images.length);
-        }, 3500);
-
-        return () => clearInterval(timer);
-
-    }, []);
 
     return (
         <section className="aboutMe" id="aboutMe">
@@ -210,9 +191,9 @@ export const AboutMe = () => {
                         </motion.div>
                     </Col>
 
-                    {/** RIGHT SIDE */}
+                    {/** RIGHT SIDE, UPDATED TO USE .media */}
                     <Col md={6} className="aboutMe-Pictures">
-                            <SwipeCardStack images={aboutMeItems.images} />
+                            <SwipeCardStack items={aboutMeItems.media} />
                     </Col>
                 </Row>
 
@@ -221,13 +202,13 @@ export const AboutMe = () => {
 
                     {/** LEFT SIDE */}
                     <Col md={6}>
-                            <row>
+                            <Row>
                                 
                                 <h1 className="aboutMe-LeadershipTitle">
                                     Work Experience
                                 </h1>
-                            </row>
-                            <row>
+                            </Row>
+                            <Row>
                                 <motion.div
                                     className="aboutMe-summary"
                                     variants={containerVariants}
@@ -255,17 +236,12 @@ export const AboutMe = () => {
                                         ))}
                                     </motion.ul>
                                 </motion.div>
-                            </row>
+                            </Row>
                     </Col>
 
-                    {/** RIGHT SIDE */}
+                    {/** RIGHT SIDE, UPDATED TO USE .media */}
                     <Col md={6} className="aboutMe-Pictures">
-                            <SwipeCardStack images={workExperienceItems.images} />
-                    </Col>
-
-                    {/** RIGHT SIDE */}
-                    <Col md={6} className="aboutMe-Leadership-Pictures">
-                            <h1> RIGHT PICTURE HERE</h1>
+                            <SwipeCardStack items={workExperienceItems.media} />
                     </Col>
                 </Row>
             </Container>

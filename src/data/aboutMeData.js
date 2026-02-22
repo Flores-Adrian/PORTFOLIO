@@ -18,13 +18,13 @@ export const aboutMeItems = {
 
         "I'm currently seeking software engineering or technically focused roles where I can continue growing while contributing to teams that value curiousity, mentorship, and impact.",
     ],
-    /* media: [
-        { type: "image", src: pictureOfMe, alt=" Portrait "},
-        { type: "image", src: cumLaudePicture, alt=" Cum Laude "},
-        { type: "image", src: jpl_research_pic, alt=" JPL research "},
+    media: [
+        { type: "image", src: pictureOfMe, alt: " Portrait " },
+        { type: "image", src: cumLaudePicture, alt: " Cum Laude " },
+        { type: "image", src: jpl_research_pic, alt: " JPL research " },
     ],
-    */
-    images: [pictureOfMe, cumLaudePicture, jpl_research_pic],
+    
+    //images: [pictureOfMe, cumLaudePicture, jpl_research_pic],
 };
 
 // this is for THE WORK EXPERIENCE SECTION
@@ -39,15 +39,14 @@ export const workExperienceItems = {
         "Mentored students thorugh problem-solving sessions, reinforcing algorithmic thinking and hardware-software integration",
     ],
     // medio objects: image AND youtube video
-    /* media: [
+    media: [
         { type: "image", src: arduino_Project, alt: "Arduino Project 1" },
-        { type: "image", src: arduino_Second_Project, alt: "Arduino Project 2 "},
+        { type: "image", src: arduino_Second_Project, alt: "Arduino Project 2"},
         {
             type: "youtube",
-            src: "https://youtu.be/i9VjTIryn6s?si=JxgUzKJIWvidEfGU",
-            title: "Simon Says Arduino Memory Game",
+            src: "https://www.youtube.com/embed/i9VjTIryn6s?si=vk-NHqJ1bckCfO-I",
+            title:"YouTube video player",
         },
     ],
-    */
-   images: [arduino_Project, arduino_Second_Project, arduino_Second_Project_Video],
+   // images: [arduino_Project, arduino_Second_Project, arduino_Second_Project_Video],
 };
