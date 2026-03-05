@@ -31,7 +31,7 @@ export const aboutMeItems = {
 export const workExperienceItems = {
     id: "work-experience-section",
     title: "Robotics & Arduino Instructor",
-    meta: "Whizara | 2024 - Present",
+    meta: "Whizara | August 2025 - Present",
     description: [
         "Designed and delivered a custom Arduino curriculum for high school students (ages 15-18), teaching core embedded systems concepts using C++ and Arduino IDE/Cloud",
         "Guided 5-10 students per cohort through hands-on hardware projects including sensors, LEDs, motors, and input/output systems",

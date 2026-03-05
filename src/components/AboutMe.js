@@ -6,11 +6,47 @@ import { useEffect, useState } from "react";
 
 /** 
  * Renders either an image or a Youtube video based on MEDIA TYPE
+ * accept isTop to be able to play and swipe through video
 */
-function CardMedia ({ item }) {
+function CardMedia ({ item, isTop }) {
+
+    const [interactive, setInteractive] = useState(false);
+
+    // When the card is no longer on top, reset (prevents stuck states)
+    useEffect(() => {
+        if(!isTop){
+            setInteractive(false);
+        }
+    }, [isTop]);
+
     if (item.type === "youtube") {
         return (
-            <div className="aboutMe-video">
+            <div className={`aboutMe-video ${interactive ? "isInteractive" : ""}`}>
+                {/** TOP-RIGHT toggle to switch between video interaction and swipe */}
+                <button
+                    type="button"
+                    className="aboutMe-videoToggle"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setInteractive((prev) => !prev);
+                    }}
+                >
+                    {interactive ? "SWIPE" : "PLAY"}
+                </button>
+
+                {/** if not  interactive, show a full overlay to guide users*/}
+                {!interactive && (
+                    <button
+                        className="aboutMe-videoOverlay"
+                        onClick={(e) => {
+                            e.stopPropagation(); // don't trigger drag
+                            setInteractive(true);
+                        }}
+                        type="button"
+                    >
+                        CLICK PLAY TO INTERACT
+                    </button>
+                )}
                 <iframe
                     src={item.src}
                     title={item.title || "Youtube Video"}
@@ -128,7 +164,7 @@ function SwipeCardStack({ items = [] }) {
                             whileTap={isTop ? { scale: 1.02 } : undefined}
                         >
                             {/** call the new cardmedia function */}
-                            <CardMedia item={item} />
+                            <CardMedia item={item} isTop={isTop}/>
                         </motion.div>
                     );
                 })}
@@ -218,10 +254,10 @@ export const AboutMe = () => {
                                 >
                                     <div className="aboutMe-summaryTitle">
                                         <h2> 
-                                            Robotics & Arduino Instructor
+                                            {workExperienceItems.title}
                                         </h2>
                                         <h4>
-                                            Whizara | 2024 - Present
+                                            {workExperienceItems.meta}
                                         </h4>   
                                     </div>
                                     <motion.ul
